@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardDataOutput = (props) => {
+const CardCalculations = (props) => {
     if(props.cardRarity === "") {
         return null
     } else {
@@ -13,4 +13,4 @@ const CardDataOutput = (props) => {
         )
     }
 }
-export default CardDataOutput;
+export default CardCalculations;

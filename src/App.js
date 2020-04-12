@@ -8,7 +8,9 @@ import './App.css';
 import CardRarityMenu from './components/CardRarityMenu';
 import CardLevelMenu from './components/CardLevelMenu';
 import CardAmountInput from './components/cardAmount/CardAmountInput';
-import CardDataOutput from './components/CardDataOutput';
+import CardDataOutput from './components/CardCalculations';
+import CardRarityValue from './components/buttonCalculations/CardRarityValue';
+import CardDatabase from './CardDatabase';
 
 class App extends Component {
 
@@ -30,11 +32,13 @@ class App extends Component {
     })
   }
 
-  // setMinMax = () => {
-  //   if()
-  //   return (
 
-  //   )
+  setValueOfSelectedRarity = (value) => {
+    return value
+  }
+
+  // setTotalOfUsedCardLevels = () => {
+
   // }
     
   render () {
@@ -43,9 +47,17 @@ class App extends Component {
         <div>
           <h1 id="superCellText">Clash Royale Card Calculator</h1>
 
+          <CardDatabase
+            cardRarity={this.state.cardRarity}
+            cardLevel={this.state.cardLevel} />
+
           <CardRarityMenu
             setCardValues={this.setCardValues}
             cardRarity={this.state.cardRarity} />
+
+          <CardRarityValue
+            cardRarity={this.state.cardRarity}
+            valueOfSelectedRarity={this.setValueOfSelectedRarity} />
 
           <CardLevelMenu
             setCardValues={this.setCardValues}

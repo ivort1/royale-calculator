@@ -11,10 +11,10 @@ const LegendaryCardLevel = (props) => {
                     onChange={props.setCardValues}>
 
                     <option value=""></option>
-                    <option value="nine">9</option>
-                    <option value="ten">10</option>
-                    <option value="eleven">11</option>
-                    <option value="twelve">12</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
                 </select>
             </label>
 
