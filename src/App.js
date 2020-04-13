@@ -8,9 +8,9 @@ import './App.css';
 import CardRarityMenu from './components/CardRarityMenu';
 import CardLevelMenu from './components/CardLevelMenu';
 import CardAmountInput from './components/cardAmount/CardAmountInput';
-import CardDataOutput from './components/CardCalculations';
+import CardCalculations from './components/CardCalculations';
 import CardRarityValue from './components/buttonCalculations/CardRarityValue';
-import CardDatabase from './CardDatabase';
+import CardDatabase from './containers/cardDatabase/CardDatabase';
 
 class App extends Component {
 
@@ -20,6 +20,7 @@ class App extends Component {
       cardRarity: "",
       cardLevel: "",
       amountOfCards: "",
+      value: ""
     }
     this.setCardValues = this.setCardValues.bind(this);
   }
@@ -32,24 +33,34 @@ class App extends Component {
     })
   }
 
-
   setValueOfSelectedRarity = (value) => {
     return value
   }
 
-  // setTotalOfUsedCardLevels = () => {
+  calculate = () => {
+    let v = this.setValueOfSelectedRarity();
+    console.log("v: " + v)
 
-  // }
+    let w = <CardDatabase />
+    console.log("w: " + w)
+   
+    let x = v - w;
+    console.log("x: " + x)
+   
+    let y = this.state.amountOfCards;
+    console.log("y: " + y)
+   
+    let z = x - y;
+    console.log("z: " + z)
+   
+    return z
+  }
     
   render () {
     return (
 
         <div>
           <h1 id="superCellText">Clash Royale Card Calculator</h1>
-
-          <CardDatabase
-            cardRarity={this.state.cardRarity}
-            cardLevel={this.state.cardLevel} />
 
           <CardRarityMenu
             setCardValues={this.setCardValues}
@@ -64,12 +75,17 @@ class App extends Component {
             cardRarity={this.state.cardRarity}
             cardLevel={this.state.cardLevel} />
 
+          <CardDatabase
+            cardRarity={this.state.cardRarity}
+            cardLevel={this.state.cardLevel} />
+
           <CardAmountInput
             setCardValues={this.setCardValues}
             cardRarity={this.state.cardRarity}
             amountOfCards={this.state.amountOfCards} />
 
-          <CardDataOutput
+          <CardCalculations
+            calculate={this.calculate}
             cardRarity={this.state.cardRarity} />
         </div> 
     );

@@ -7,8 +7,8 @@ const CardCalculations = (props) => {
         return (
             <div>
                 <br />
-                <button>Calculate</button>
-                <h3>Amount of cards required to max:</h3>
+                <button onClick={props.calculate}>Calculate</button>
+                <p>z: {props.calculate}</p>
             </div>
         )
     }

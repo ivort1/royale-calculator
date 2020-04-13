@@ -1,3 +1,5 @@
+// import React from 'react';
+
 const CardRarityValue = (props) => {
     
     const card = props.cardRarity;
@@ -6,14 +8,15 @@ const CardRarityValue = (props) => {
         return props.valueOfSelectedRarity(9586)
     }
     if(card === "rare") {
-        return props.valueOfSelectedRarity(2586)
+        return props.valueOfSelectedRarity(9586)
 
     }
     if(card === "epic") {
-        return props.valueOfSelectedRarity(386)
+        return props.valueOfSelectedRarity(9586)
     }
     if(card === "legendary") {
-        return props.valueOfSelectedRarity(36)
+        return props.valueOfSelectedRarity(9586)
+        // return <p>v: {props.valueOfSelectedRarity(9586)}</p>
     }
     if(card === "")  {
         return null

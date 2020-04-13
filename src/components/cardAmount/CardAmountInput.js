@@ -15,7 +15,7 @@ const CardAmountInput = (props) => {
                     onChange={props.setCardValues}>
                 </input>
                     
-                <h2>{props.amountOfCards}</h2>
+                <p>y: {props.amountOfCards}</p>
             </div>
         )
     }
