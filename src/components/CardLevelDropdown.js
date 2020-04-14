@@ -4,23 +4,23 @@ import RareCardLevel from './cardLevels/RareCardLevel';
 import EpicCardLevel from './cardLevels/EpicCardLevel';
 import LegendaryCardLevel from './cardLevels/LegendaryCardLevel';
 
-const CardLevelMenu = (props) => {
+const CardLevelDropdown = (props) => {
     const card = props.cardRarity;
     
-    if(card === "common") {
+    if(card === "9586") {
         return <CommonCardLevel cardLevel={props.cardLevel} setCardValues={props.setCardValues}/>
     }
-    if(card === "rare") {
+    if(card === "2586") {
         return <RareCardLevel cardLevel={props.cardLevel} setCardValues={props.setCardValues}/>
     }
-    if(card === "epic") {
+    if(card === "386") {
         return <EpicCardLevel cardLevel={props.cardLevel} setCardValues={props.setCardValues}/>
     }
-    if(card === "legendary") {
+    if(card === "36") {
         return <LegendaryCardLevel cardLevel={props.cardLevel} setCardValues={props.setCardValues}/>
     }
     if(card === "")  {
         return null
     }
 }
-export default CardLevelMenu;
+export default CardLevelDropdown;

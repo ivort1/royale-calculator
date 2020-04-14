@@ -1,20 +1,20 @@
 import React from 'react';
 
-const CardRarityMenu = (props) => {
+const CardRarityDropdown = (props) => {
     return (
         <div>
             <label>
                 Card Rarity <br />
                 <select value={props.cardRarity} name ="cardRarity" onChange={props.setCardValues}>
                     <option value=""></option>
-                    <option value="common">Common</option>
-                    <option value="rare">Rare</option>
-                    <option value="epic">Epic</option>
-                    <option value="legendary">Legendary</option>
+                    <option value="9586">Common</option>
+                    <option value="2586">Rare</option>
+                    <option value="386">Epic</option>
+                    <option value="36">Legendary</option>
                 </select>
                 <h2>{props.cardRarity}</h2>
             </label>
         </div>
     );
 }
-export default CardRarityMenu;
+export default CardRarityDropdown;

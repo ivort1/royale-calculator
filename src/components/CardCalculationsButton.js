@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardCalculations = (props) => {
+const CardCalculationsButton = (props) => {
     if(props.cardRarity === "") {
         return null
     } else {
@@ -8,9 +8,9 @@ const CardCalculations = (props) => {
             <div>
                 <br />
                 <button onClick={props.calculate}>Calculate</button>
-                <p>z: {props.calculate}</p>
+                {/* <p>z: {props.calculate}</p>  */}
             </div>
         )
     }
 }
-export default CardCalculations;
+export default CardCalculationsButton;

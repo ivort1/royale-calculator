@@ -12,72 +12,29 @@ const CardDatabase = (props) => {
     let filteredArray = [];
     let pushedArray = [];
     let reducedArray = [];
+
+    const array = (rarityOfArray) => {
+        filteredArray = rarityOfArray.filter(item => item.key <= level)
+
+        for(let x = 0; x < filteredArray.length; x++) {
+            pushedArray.push(filteredArray[x].cardsRequiredToUpgrade)
+            console.log(pushedArray);
+        }
+
+        reducedArray = pushedArray.reduce((a, b) => a + b, 0);
+        console.log("Reduced - " + reducedArray);
+
+        return reducedArray
+    }
     
-    if(card === "common") {
-        filteredArray = common.filter(item => item.key <= level)
-        for(let x = 0; x < filteredArray.length; x++) {
-            pushedArray.push(filteredArray[x].cardsRequiredToUpgrade)
-            console.log(pushedArray);
-        }
-        reducedArray = pushedArray.reduce((a, b) => a + b, 0);
-        console.log("Reduced - " + reducedArray);
+    if(card === "9586") {return array(common)}
 
-        return reducedArray
-    }
+    if(card === "2586") {return array(rare)}
 
-    if(card === "rare") {
-        filteredArray = rare.filter(item => item.key <= level)
-        for(let x = 0; x < filteredArray.length; x++) {
-            pushedArray.push(filteredArray[x].cardsRequiredToUpgrade)
-            console.log(pushedArray);
-        }
-        reducedArray = pushedArray.reduce((a, b) => a + b, 0);
-        console.log("Reduced - " + reducedArray);
+    if(card === "386") {return array(epic)}
 
-        return reducedArray
-    }
+    if(card === "36") {return array(legendary)}
 
-    if(card === "epic") {
-        filteredArray = epic.filter(item => item.key <= level)
-        for(let x = 0; x < filteredArray.length; x++) {
-            pushedArray.push(filteredArray[x].cardsRequiredToUpgrade)
-            console.log(pushedArray);
-        }
-        reducedArray = pushedArray.reduce((a, b) => a + b, 0);
-        console.log("Reduced - " + reducedArray);
-
-        return reducedArray
-    }
-
-    if(card === "legendary") {
-        filteredArray = legendary.filter(item => item.key <= level)
-        for(let x = 0; x < filteredArray.length; x++) {
-            pushedArray.push(filteredArray[x].cardsRequiredToUpgrade)
-            console.log(pushedArray);
-        }
-        reducedArray = pushedArray.reduce((a, b) => a + b, 0);
-        console.log("Reduced - " + reducedArray);
-
-        return reducedArray
-        // return <p>w: {reducedArray}</p>
-    }
-
-    if(card === "")  {
-        return null
-    }
+    if(card === "")  {return null}
 }
 export default CardDatabase;
-
-// return (
-        //     <div>
-        //         {Database.legendary.map((item) => {
-        //             return (
-        //                 <div>
-        //                     <h5>Level: {item.level}</h5>
-        //                     <h5>Cards: {item.cardsRequiredToUpgrade}</h5>
-        //                     <h5>Gold: {item.goldRequiredToUpgrade}</h5>
-        //                 </div>
-        //             )
-        //         })}
-        //     </div>
-        // )
