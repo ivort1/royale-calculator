@@ -17,9 +17,6 @@ const LegendaryCardLevel = (props) => {
                     <option value="12">12</option>
                 </select>
             </label>
-
-            <h3>{props.cardLevel}</h3>
-
         </div>
     );
 }

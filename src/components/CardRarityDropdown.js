@@ -12,7 +12,6 @@ const CardRarityDropdown = (props) => {
                     <option value="386">Epic</option>
                     <option value="36">Legendary</option>
                 </select>
-                <h2>{props.cardRarity}</h2>
             </label>
         </div>
     );

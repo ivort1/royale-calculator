@@ -9,7 +9,8 @@ import CardRarityDropdown from './components/CardRarityDropdown';
 import CardLevelDropdown from './components/CardLevelDropdown';
 import CardAmountInput from './components/CardAmountInput';
 import CardCalculationsButton from './components/CardCalculationsButton';
-import CardDatabase from './containers/cardDatabase/CardDatabase';
+
+import cardDatabase from './containers/cardDatabase/cardDatabase.js';
 
 class App extends Component {
 
@@ -19,8 +20,10 @@ class App extends Component {
       cardRarity: "",
       cardLevel: "",
       amountOfCards: "",
+      cardsNeeded: ""
     }
     this.setCardValues = this.setCardValues.bind(this);
+    this.calculate = this.calculate.bind(this);
   }
 
   setCardValues = (event) => {
@@ -32,22 +35,27 @@ class App extends Component {
   }
 
   calculate = () => {
-    let v = this.state.cardRarity;
-    console.log("v: " + v)
+    let rarity = this.state.cardRarity;
+    let level = this.state.cardLevel;
 
-    let w = <CardDatabase />;
-    console.log("w: " + w)
+    console.log("v: " + rarity) //v = card rarity: common - 9586, rare - 2586, epic - 386, legendary - 36
+
+    let w = cardDatabase(rarity, level);
+    console.log("w: " + w) //w = the total number of cards that have already been used for upgrades based on the card's selected level
    
-    let x = v - w;
-    console.log("x: " + x)
+    let x = rarity - w;
+    console.log("x: " + x) // x = the amount of cards required to max the card solely based on its current level
    
     let y = this.state.amountOfCards;
-    console.log("y: " + y)
+    console.log("y: " + y) // y = the amount of cards the player currently has
    
+    this.setState({
+      cardsNeeded: x - y
+    })
     let z = x - y;
-    console.log("z: " + z)
+    console.log("z: " + z)// z = the number of remaining cards the player needs to collect to max the card out
    
-    return z
+    return this.state.cardsNeeded;
   }
     
   render () {
@@ -65,11 +73,6 @@ class App extends Component {
             cardRarity={this.state.cardRarity}
             cardLevel={this.state.cardLevel} />
 
-          <CardDatabase
-            cardRarity={this.state.cardRarity}
-            cardLevel={this.state.cardLevel} 
-            reducedArray={this.state.reducedArray}/>
-
           <CardAmountInput
             setCardValues={this.setCardValues}
             cardRarity={this.state.cardRarity}
@@ -77,7 +80,8 @@ class App extends Component {
 
           <CardCalculationsButton
             calculate={this.calculate}
-            cardRarity={this.state.cardRarity} />
+            cardRarity={this.state.cardRarity}
+            cardsNeeded={this.state.cardsNeeded} />
         </div> 
     );
   }

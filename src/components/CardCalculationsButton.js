@@ -8,7 +8,7 @@ const CardCalculationsButton = (props) => {
             <div>
                 <br />
                 <button onClick={props.calculate}>Calculate</button>
-                {/* <p>z: {props.calculate}</p>  */}
+                <h1>{props.cardsNeeded}</h1>
             </div>
         )
     }

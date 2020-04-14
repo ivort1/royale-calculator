@@ -22,8 +22,6 @@ const RareCardLevel = (props) => {
                     <option value="11">11</option>
                     <option value="12">12</option>
                 </select>
-
-                <h3>{props.cardLevel}</h3>
             </label>
         </div>
     );

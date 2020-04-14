@@ -14,8 +14,6 @@ const CardAmountInput = (props) => {
                     name="amountOfCards" /*min={props.minNumber} max={props.maxNumber}*/
                     onChange={props.setCardValues}>
                 </input>
-                    
-                <p>y: {props.amountOfCards}</p>
             </div>
         )
     }
