@@ -8,7 +8,12 @@ import CardLevelDropdown from './components/CardLevelDropdown';
 import CardAmountInput from './components/CardAmountInput';
 import CardCalculationsButton from './components/CardCalculationsButton';
 
+<<<<<<< HEAD
 import CardRarityDropdown from './components/CardRarityDropdown';
+=======
+//Material-UI
+import Dropdown from './components/material-ui/Dropdown';
+>>>>>>> Installed Material-UI
 
 import cardDatabase from './containers/cardDatabase/cardDatabase.js';
 
@@ -68,6 +73,8 @@ class App extends Component {
     return (
         <div className="flex">
           <h1 id="superCellText">Clash Royale Card Calculator</h1>
+
+          <Dropdown />
 
           <CardRarityDropdown 
             label={"Card Rarity"}
