@@ -15,9 +15,8 @@ const cardDatabase = (cardRarity, cardLevel) => {
 
         for(let x = 0; x < filteredArray.length; x++) {
             pushedArray.push(filteredArray[x].cardsRequiredToUpgrade)
-            console.log(pushedArray);
         }
-
+        console.log(pushedArray);
         reducedArray = pushedArray.reduce((a, b) => a + b, 0);
         console.log("Reduced - " + reducedArray);
 

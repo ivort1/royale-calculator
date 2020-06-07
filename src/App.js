@@ -1,19 +1,18 @@
 import React, {Component} from 'react';
 
 // CSS
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 // Components 
-import CardRarityDropdown from './components/CardRarityDropdown';
 import CardLevelDropdown from './components/CardLevelDropdown';
 import CardAmountInput from './components/CardAmountInput';
 import CardCalculationsButton from './components/CardCalculationsButton';
 
+import CardRarityDropdown from './components/CardRarityDropdown';
+
 import cardDatabase from './containers/cardDatabase/cardDatabase.js';
 
 class App extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -57,16 +56,25 @@ class App extends Component {
    
     return this.state.cardsNeeded;
   }
-    
-  render () {
-    return (
 
-        <div>
+  render () {
+    const cardRarityObject = [
+      { key: 1, text: 'Common', value: 9586 },
+      { key: 2, text: 'Rare', value: 2586 },
+      { key: 3, text: 'Epic', value: 386 },
+      { key: 4, text: 'Legendary', value: 36 }
+    ]    
+
+    return (
+        <div className="flex">
           <h1 id="superCellText">Clash Royale Card Calculator</h1>
 
-          <CardRarityDropdown
-            setCardValues={this.setCardValues}
-            cardRarity={this.state.cardRarity} />
+          <CardRarityDropdown 
+            label={"Card Rarity"}
+            value={this.state.cardRarity}
+            name={"cardRarity"}
+            onChange={this.setCardValues}
+            object={cardRarityObject} />
 
           <CardLevelDropdown
             setCardValues={this.setCardValues}
@@ -82,7 +90,7 @@ class App extends Component {
             calculate={this.calculate}
             cardRarity={this.state.cardRarity}
             cardsNeeded={this.state.cardsNeeded} />
-        </div> 
+        </div>
     );
   }
 }

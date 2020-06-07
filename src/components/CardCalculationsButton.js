@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Button.css';
+
 const CardCalculationsButton = (props) => {
     if(props.cardRarity === "") {
         return null
@@ -7,7 +9,7 @@ const CardCalculationsButton = (props) => {
         return (
             <div>
                 <br />
-                <button onClick={props.calculate}>Calculate</button>
+                <button id="button" onClick={props.calculate}>CALCULATE</button>
                 <h1>{props.cardsNeeded}</h1>
             </div>
         )

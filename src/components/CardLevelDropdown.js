@@ -1,20 +1,38 @@
 import React from 'react';
-import CommonCardLevel from './cardLevels/CommonCardLevel';
-import RareCardLevel from './cardLevels/RareCardLevel';
-import EpicCardLevel from './cardLevels/EpicCardLevel';
-import LegendaryCardLevel from './cardLevels/LegendaryCardLevel';
 
 const CardLevelDropdown = (props) => {
     const card = props.cardRarity;
-    
-    if(card === "9586") { return <CommonCardLevel cardLevel={props.cardLevel} setCardValues={props.setCardValues}/> }
+    let cardLevelArray = [];
 
-    if(card === "2586") { return <RareCardLevel cardLevel={props.cardLevel} setCardValues={props.setCardValues}/> }
+    if(card === "9586") { cardLevelArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }
 
-    if(card === "386") { return <EpicCardLevel cardLevel={props.cardLevel} setCardValues={props.setCardValues}/> }
+    if(card === "2586") { cardLevelArray = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }
 
-    if(card === "36") { return <LegendaryCardLevel cardLevel={props.cardLevel} setCardValues={props.setCardValues}/> }
+    if(card === "386") { cardLevelArray = [6, 7, 8, 9, 10, 11, 12] }
+
+    if(card === "36") { cardLevelArray = [9, 10, 11, 12] }
 
     if(card === "")  { return null }
+
+    return (
+        <div>
+            <label>
+                Current Card Level <br />
+                <select
+                    value={props.cardLevel}
+                    name="cardLevel"
+                    onChange={props.setCardValues}>
+                    
+                    <option value=""></option>
+                    {
+                        cardLevelArray.map(element => {
+                            return <option value={element}>{element}</option>
+                        })
+                    }
+                </select>
+            </label>
+        </div>
+        
+    )
 }
 export default CardLevelDropdown;

@@ -1,19 +1,30 @@
-
 @font-face {
-    font-family: 'Supercell-Magic';
-    src: url('./fonts/Supercell-Magic.eot');
-    src: url('./fonts/Supercell-Magic.eot?#iefix') format('embedded-opentype'),
-         url('./fonts/Supercell-Magic.svg#Supercell-Magic') format('svg'),
-         url('./fonts/Supercell-Magic.ttf') format('truetype'),
-         url('./fonts/Supercell-Magic.woff') format('woff'),
-         url('./fonts/Supercell-Magic.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-  }
+  font-family: 'Supercell-Magic';
+  src: url('./fonts/Supercell-Magic.eot');
+  src: url('./fonts/Supercell-Magic.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/Supercell-Magic.svg#Supercell-Magic') format('svg'),
+        url('./fonts/Supercell-Magic.ttf') format('truetype'),
+        url('./fonts/Supercell-Magic.woff') format('woff'),
+        url('./fonts/Supercell-Magic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* align-items: center;
+  height: 100vh;
+  background-color: #353C51; */
+}
   
 
 #superCellText {
-      font-family: Supercell-Magic;
-      text-align: center;
-      padding: 50px 50px;
+  font-family: Supercell-Magic;
 }
