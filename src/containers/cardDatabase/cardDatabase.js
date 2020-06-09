@@ -23,13 +23,13 @@ const cardDatabase = (cardRarity, cardLevel) => {
         return reducedArray
     }
     
-    if(cardRarity === "9586") {return array(common)}
+    if(cardRarity === 9586) {return array(common)}
 
-    if(cardRarity === "2586") {return array(rare)}
+    if(cardRarity === 2586) {return array(rare)}
 
-    if(cardRarity === "386") {return array(epic)}
+    if(cardRarity === 386) {return array(epic)}
 
-    if(cardRarity === "36") {return array(legendary)}
+    if(cardRarity === 36) {return array(legendary)}
 
     if(cardRarity === "")  {return null}
 }

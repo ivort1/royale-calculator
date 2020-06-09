@@ -15,30 +15,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleSelect() {
+export default function SimpleSelect(props) {
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  const cardRarityObject = [
+    { key: 1, text: 'Common', value: 9586 },
+    { key: 2, text: 'Rare', value: 2586 },
+    { key: 3, text: 'Epic', value: 386 },
+    { key: 4, text: 'Legendary', value: 36 }
+  ]   
 
   return (
     <div>
       <FormControl variant="filled" className={classes.formControl}>
-        <InputLabel id="demo-simple-select-filled-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-filled-label">{props.label}</InputLabel>
         <Select
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
-          value={age}
-          onChange={handleChange}
+          value={props.value}
+          name={props.name}
+          onChange={props.onChange}
+          style={{width: '40vh'}}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value=""><em>None</em></MenuItem>
+          {
+              cardRarityObject.map(element => {
+                  return <MenuItem value={element.value}>{element.text}</MenuItem>
+              })
+          }
         </Select>
       </FormControl>
     </div>

@@ -5,15 +5,12 @@ import './App.css';
 
 // Components 
 import CardLevelDropdown from './components/CardLevelDropdown';
-import CardAmountInput from './components/CardAmountInput';
-import CardCalculationsButton from './components/CardCalculationsButton';
 
-<<<<<<< HEAD
-import CardRarityDropdown from './components/CardRarityDropdown';
-=======
 //Material-UI
 import Dropdown from './components/material-ui/Dropdown';
->>>>>>> Installed Material-UI
+import TextField from './components/material-ui/TextField';
+import AppBar from './components/material-ui/AppBar';
+import Button from './components/material-ui/Button';
 
 import cardDatabase from './containers/cardDatabase/cardDatabase.js';
 
@@ -58,46 +55,46 @@ class App extends Component {
     })
     let z = x - y;
     console.log("z: " + z)// z = the number of remaining cards the player needs to collect to max the card out
-   
+    console.log("----------")
     return this.state.cardsNeeded;
   }
 
-  render () {
-    const cardRarityObject = [
-      { key: 1, text: 'Common', value: 9586 },
-      { key: 2, text: 'Rare', value: 2586 },
-      { key: 3, text: 'Epic', value: 386 },
-      { key: 4, text: 'Legendary', value: 36 }
-    ]    
+  render () { 
 
     return (
-        <div className="flex">
-          <h1 id="superCellText">Clash Royale Card Calculator</h1>
+        <div>
+          <div className="appBar">
+            <AppBar />
+          </div>
 
-          <Dropdown />
+          <div className="flex">
+            <Dropdown
+              label={"Card Rarity"}
+              value={this.state.cardRarity}
+              name={"cardRarity"}
+              onChange={this.setCardValues} />
 
-          <CardRarityDropdown 
-            label={"Card Rarity"}
-            value={this.state.cardRarity}
-            name={"cardRarity"}
-            onChange={this.setCardValues}
-            object={cardRarityObject} />
+            <CardLevelDropdown
+              label={"Card Level"}
+              value={this.state.cardLevel}
+              name={"cardLevel"}
+              onChange={this.setCardValues}
+              cardRarity={this.state.cardRarity} />
 
-          <CardLevelDropdown
-            setCardValues={this.setCardValues}
-            cardRarity={this.state.cardRarity}
-            cardLevel={this.state.cardLevel} />
+            <TextField
+              label={"# of cards currently owned"}
+              value={this.state.amountOfCards}
+              name="amountOfCards"
+              onChange={this.setCardValues} />
 
-          <CardAmountInput
-            setCardValues={this.setCardValues}
-            cardRarity={this.state.cardRarity}
-            amountOfCards={this.state.amountOfCards} />
-
-          <CardCalculationsButton
-            calculate={this.calculate}
-            cardRarity={this.state.cardRarity}
-            cardsNeeded={this.state.cardsNeeded} />
+            <Button
+              calculate={this.calculate}
+              cardRarity={this.state.cardRarity}
+              cardLevel={this.state.cardLevel}
+              amountOfCards={this.state.amountOfCards}
+              cardsNeeded={this.state.cardsNeeded} />
         </div>
+      </div>
     );
   }
 }
