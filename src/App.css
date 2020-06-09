@@ -15,16 +15,21 @@ body {
   height: 100%;
 }
 
+.MuiAppBar-colorPrimary {
+  background-color: #303030;
+}
+
+
 .flex {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  /* align-items: center;
-  height: 100vh;
-  background-color: #353C51; */
+  background-color: #50E8CA;
+  height: 93.6vh;
 }
   
 
-#superCellText {
+.superCellText {
   font-family: Supercell-Magic;
 }

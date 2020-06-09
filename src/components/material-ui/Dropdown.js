@@ -17,17 +17,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleSelect(props) {
   const classes = useStyles();
-  const card = props.cardRarity;
-  let cardLevelArray = [];
-
-  if(card === 9586) { cardLevelArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }
-
-  if(card === 2586) { cardLevelArray = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }
-
-  if(card === 386) { cardLevelArray = [6, 7, 8, 9, 10, 11, 12] }
-
-  if(card === 36) { cardLevelArray = [9, 10, 11, 12] }
-
+  const cardRarityObject = [
+    { key: 1, text: 'Common', value: 9586 },
+    { key: 2, text: 'Rare', value: 2586 },
+    { key: 3, text: 'Epic', value: 386 },
+    { key: 4, text: 'Legendary', value: 36 }
+  ]   
 
   return (
     <div>
@@ -39,12 +34,12 @@ export default function SimpleSelect(props) {
           value={props.value}
           name={props.name}
           onChange={props.onChange}
-          style={{width: "40vh"}}
+          style={{width: '40vh'}}
         >
           <MenuItem value=""><em>None</em></MenuItem>
           {
-              cardLevelArray.map(element => {
-                  return <MenuItem value={element}>{element}</MenuItem>
+              cardRarityObject.map(element => {
+                  return <MenuItem value={element.value}>{element.text}</MenuItem>
               })
           }
         </Select>
