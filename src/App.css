@@ -15,21 +15,46 @@ body {
   height: 100%;
 }
 
-.MuiAppBar-colorPrimary {
-  background-color: #303030;
-}
-
-
 .flex {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #50E8CA;
-  height: 93.6vh;
+  height: 93vh;
 }
   
-
 .superCellText {
   font-family: Supercell-Magic;
+  font-size: 2.5vh;
+  color: #fdfdfd;
+}
+
+.resultsText {
+  color: #3F51B5;
+  font-family: "Supercell-Magic";
+}
+
+.appBarFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 7vh;
+}
+
+/*<----- Material-UI Components ----->*/
+.MuiAppBar-colorPrimary {
+  background-color: #303030;
+}
+
+.MuiFormLabel-root.MuiInputLabel-root {
+  font-family: "Supercell-Magic";
+  /* font-size: 2.2vh; */
+}
+.MuiFormLabel-root.Mui-focused.Mui-focused{
+  color: #3F51B5;
+}
+
+.MuiInputBase-root.MuiFilledInput-underline.Mui-focused.Mui-focused {
+  /* border-bottom: red; */
 }

@@ -32,7 +32,7 @@ export default function SimpleSelect(props) {
   return (
     <div>
       <FormControl variant="filled" className={classes.formControl}>
-        <InputLabel id="demo-simple-select-filled-label">{props.label}</InputLabel>
+        <InputLabel id="demo-simple-select-filled-label" style={{fontFamily: "Supercell-Magic"}}>{props.label}</InputLabel>
         <Select
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
@@ -44,7 +44,7 @@ export default function SimpleSelect(props) {
           <MenuItem value=""><em>None</em></MenuItem>
           {
               cardLevelArray.map(element => {
-                  return <MenuItem value={element}>{element}</MenuItem>
+                  return <MenuItem key={element} value={element}>{element}</MenuItem>
               })
           }
         </Select>

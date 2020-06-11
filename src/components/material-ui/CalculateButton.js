@@ -18,23 +18,21 @@ export default function ContainedButtons(props) {
             <div className={classes.root}>
                 <Button
                     variant="contained"
-                    disabled onClick={props.calculate}
-                    style={{width: "40vh"}}>
+                    disabled
+                    style={{width: "40vh", fontFamily: 'Supercell-Magic'}}>
                     Calculate
                 </Button>
-                <h1>{props.cardsNeeded}</h1>
             </div>
       );
   } else {
         return(
             <div className={classes.root}>
                 <Button
-                    style={{background: '#303030', color: '#fdfdfd', width: "40vh"}}
+                    style={{background: '#303030', color: '#fdfdfd', width: "40vh", fontFamily: 'Supercell-Magic'}}
                     variant="contained"
                     onClick={props.calculate}>
                     Calculate
                 </Button>
-                <h1>{props.cardsNeeded}</h1>
             </div>
         );
   }

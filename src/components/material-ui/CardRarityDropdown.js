@@ -23,23 +23,23 @@ export default function SimpleSelect(props) {
     { key: 3, text: 'Epic', value: 386 },
     { key: 4, text: 'Legendary', value: 36 }
   ]   
-
+ 
   return (
     <div>
       <FormControl variant="filled" className={classes.formControl}>
-        <InputLabel id="demo-simple-select-filled-label">{props.label}</InputLabel>
+        <InputLabel id="demo-simple-select-filled-label" style={{fontFamily: "Supercell-Magic"}}>{props.label}</InputLabel>
         <Select
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
           value={props.value}
           name={props.name}
           onChange={props.onChange}
-          style={{width: '40vh'}}
+          style={{width: "40vh"}}
         >
           <MenuItem value=""><em>None</em></MenuItem>
           {
               cardRarityObject.map(element => {
-                  return <MenuItem value={element.value}>{element.text}</MenuItem>
+                  return <MenuItem key={element.key} value={element.value}>{element.text}</MenuItem>
               })
           }
         </Select>

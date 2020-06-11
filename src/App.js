@@ -4,13 +4,15 @@ import React, {Component} from 'react';
 import './App.css';
 
 // Components 
-import CardLevelDropdown from './components/CardLevelDropdown';
+import CardLevelDropdown from './components/material-ui/CardLevelDropdown';
 
 //Material-UI
-import Dropdown from './components/material-ui/Dropdown';
+import AppBar from './components/material-ui/AppBar/AppBar';
+import Dropdown from './components/material-ui/CardRarityDropdown';
 import TextField from './components/material-ui/TextField';
-import AppBar from './components/material-ui/AppBar';
-import Button from './components/material-ui/Button';
+import Button from './components/material-ui/CalculateButton';
+import Results from './components/material-ui/Results';
+import ResetButton from './components/material-ui/ResetButton';
 
 import cardDatabase from './containers/cardDatabase/cardDatabase.js';
 
@@ -21,10 +23,13 @@ class App extends Component {
       cardRarity: "",
       cardLevel: "",
       amountOfCards: "",
-      cardsNeeded: ""
+      cardsNeeded: "",
+      requestValue: "",
+      visible: false
     }
     this.setCardValues = this.setCardValues.bind(this);
     this.calculate = this.calculate.bind(this);
+    this.resetForm = this.resetForm.bind(this);
   }
 
   setCardValues = (event) => {
@@ -33,6 +38,25 @@ class App extends Component {
     this.setState({
           [name]: value
     })
+
+    if((name === "cardRarity") && (value === 9586)) {
+      this.setState({
+        requestValue: 40,
+      })
+    }
+
+    if((name === "cardRarity") && ((value === 2586) || (value === 386))) {
+      this.setState({
+        requestValue: 4,
+      })
+    }
+    
+    if((name === "cardRarity") && (value === 36)) {
+      this.setState({
+        requestValue: null
+      })
+    }
+    console.log("Request value: " + this.state.requestValue);
   }
 
   calculate = () => {
@@ -51,21 +75,32 @@ class App extends Component {
     console.log("y: " + y) // y = the amount of cards the player currently has
    
     this.setState({
-      cardsNeeded: x - y
+      cardsNeeded: x - y,
+      visible: true
+
     })
     let z = x - y;
     console.log("z: " + z)// z = the number of remaining cards the player needs to collect to max the card out
     console.log("----------")
+
     return this.state.cardsNeeded;
+  }
+
+  resetForm = () => {
+    this.setState({
+      cardRarity: "",
+      cardLevel: "",
+      amountOfCards: "",
+      visible: false
+    })
   }
 
   render () { 
 
     return (
         <div>
-          <div className="appBar">
-            <AppBar />
-          </div>
+       
+          <AppBar />
 
           <div className="flex">
             <Dropdown
@@ -82,17 +117,35 @@ class App extends Component {
               cardRarity={this.state.cardRarity} />
 
             <TextField
-              label={"# of cards currently owned"}
+              label={"# of Cards Owned"}
               value={this.state.amountOfCards}
               name="amountOfCards"
               onChange={this.setCardValues} />
 
             <Button
-              calculate={this.calculate}
               cardRarity={this.state.cardRarity}
               cardLevel={this.state.cardLevel}
               amountOfCards={this.state.amountOfCards}
-              cardsNeeded={this.state.cardsNeeded} />
+              calculate={this.calculate} />
+
+            {
+              this.state.visible ?
+              <Results
+                cardRarity={this.state.cardRarity}
+                cardLevel={this.state.cardLevel}
+                cardsNeeded={this.state.cardsNeeded}
+                requestValue={this.state.requestValue} />
+              :
+              null
+            }
+            {
+              this.state.visible ?
+              <ResetButton
+                onClick={this.resetForm} />
+              :
+              null
+            } 
+
         </div>
       </div>
     );
