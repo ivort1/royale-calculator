@@ -12,6 +12,7 @@ import Dropdown from './components/material-ui/CardRarityDropdown';
 import TextField from './components/material-ui/TextField';
 import Button from './components/material-ui/CalculateButton';
 import Results from './components/material-ui/Results';
+import AlertComponent from './components/material-ui/AlertComponent';
 import ResetButton from './components/material-ui/ResetButton';
 
 import cardDatabase from './containers/cardDatabase/cardDatabase.js';
@@ -25,7 +26,8 @@ class App extends Component {
       amountOfCards: "",
       cardsNeeded: "",
       requestValue: "",
-      visible: false
+      visible: false,
+      alertVisible: false
     }
     this.setCardValues = this.setCardValues.bind(this);
     this.calculate = this.calculate.bind(this);
@@ -54,6 +56,19 @@ class App extends Component {
     if((name === "cardRarity") && (value === 36)) {
       this.setState({
         requestValue: null
+      })
+    }
+
+    if(name === "amountOfCards") {
+      let integer = value;
+      let remainder = integer % 2;
+      console.log(value);
+      console.log(remainder);
+
+      if(!Number.isInteger(remainder))
+        this.setState({
+        alertVisible: true,
+        amountOfCards: ""
       })
     }
     console.log("Request value: " + this.state.requestValue);
@@ -95,6 +110,12 @@ class App extends Component {
     })
   }
 
+  closeAlert = () => {
+    this.setState({
+      alertVisible: false
+    })
+  }
+
   render () { 
 
     return (
@@ -122,6 +143,14 @@ class App extends Component {
               name="amountOfCards"
               onChange={this.setCardValues} />
 
+            {
+              this.state.alertVisible ?
+              <AlertComponent
+                closeAlert={this.closeAlert} />
+              :
+              null
+            } 
+
             <Button
               cardRarity={this.state.cardRarity}
               cardLevel={this.state.cardLevel}
@@ -145,7 +174,6 @@ class App extends Component {
               :
               null
             } 
-
         </div>
       </div>
     );
