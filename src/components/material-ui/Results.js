@@ -29,7 +29,7 @@ const Results = (props) => {
         }
     }
     return(
-        <div style={{width: "40vh", marginTop: "10vh"}}>
+        <div style={{width: "40vh", marginTop: "3vh"}}>
             <div style={{padding: "10px"}}>
                 In order to max out your <b>Level {props.cardLevel} {rarity}</b> card:
             </div>

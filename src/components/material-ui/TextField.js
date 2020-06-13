@@ -23,7 +23,8 @@ export default function BasicTextFields(props) {
         name={props.name}
         value={props.value}
         onChange={props.onChange} 
-        style={{width: "40vh"}} />
+        style={{width: "40vh"}}
+        inputProps={{inputMode: "numeric"}} />
     </form>
   );
 }
