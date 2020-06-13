@@ -19,6 +19,18 @@ import cardDatabase from './containers/cardDatabase/cardDatabase.js';
 import goldDatabase from './containers/cardDatabase/goldDatabase';
 
 class App extends Component {
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    this.scroll.scrollIntoView({ behavior: 'smooth' });
+  }
+
   constructor() {
     super();
     this.state = {
@@ -180,7 +192,9 @@ class App extends Component {
                 onClick={this.resetForm} />
               :
               null
-            } 
+            }
+
+            <div ref={scroll => { this.scroll = scroll; }} />
         </div>
       </div>
     );
