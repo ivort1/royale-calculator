@@ -10,12 +10,13 @@ import CardLevelDropdown from './components/material-ui/CardLevelDropdown';
 import AppBar from './components/material-ui/AppBar/AppBar';
 import Dropdown from './components/material-ui/CardRarityDropdown';
 import TextField from './components/material-ui/TextField';
-import Button from './components/material-ui/CalculateButton';
+import CalculateButton from './components/material-ui/CalculateButton';
 import Results from './components/material-ui/Results';
 import AlertComponent from './components/material-ui/AlertComponent';
 import ResetButton from './components/material-ui/ResetButton';
 
 import cardDatabase from './containers/cardDatabase/cardDatabase.js';
+import goldDatabase from './containers/cardDatabase/goldDatabase';
 
 class App extends Component {
   constructor() {
@@ -25,6 +26,7 @@ class App extends Component {
       cardLevel: "",
       amountOfCards: "",
       cardsNeeded: "",
+      goldNeeded: "",
       requestValue: "",
       visible: false,
       alertVisible: false
@@ -77,6 +79,9 @@ class App extends Component {
   calculate = () => {
     let rarity = this.state.cardRarity;
     let level = this.state.cardLevel;
+    let gold = goldDatabase(rarity, level).toLocaleString();
+
+    console.log("Gold required: " + gold);
 
     console.log("v: " + rarity) //v = card rarity: common - 9586, rare - 2586, epic - 386, legendary - 36
 
@@ -91,6 +96,7 @@ class App extends Component {
    
     this.setState({
       cardsNeeded: x - y,
+      goldNeeded: gold,
       visible: true
 
     })
@@ -151,7 +157,7 @@ class App extends Component {
               null
             } 
 
-            <Button
+            <CalculateButton
               cardRarity={this.state.cardRarity}
               cardLevel={this.state.cardLevel}
               amountOfCards={this.state.amountOfCards}
@@ -163,6 +169,7 @@ class App extends Component {
                 cardRarity={this.state.cardRarity}
                 cardLevel={this.state.cardLevel}
                 cardsNeeded={this.state.cardsNeeded}
+                goldNeeded={this.state.goldNeeded}
                 requestValue={this.state.requestValue} />
               :
               null
