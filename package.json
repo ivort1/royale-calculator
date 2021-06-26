@@ -36,5 +36,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "A simple web app that allows you to calculate how many cards, requests, and gold you'll need to max out a card in Super Cell's Clash Royale.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivort1/royale-calculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivort1/royale-calculator/issues"
   }
 }
